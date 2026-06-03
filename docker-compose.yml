@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: drilling-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - API_PORT=8000
+      - DATABASE_URL=sqlite:///./data/drilling.db
+      - MLFLOW_TRACKING_URI=./mlflow/mlruns
+      - N_ROWS=60000        # smaller for faster container bootstrap; raise for full 200k
+      - N_WELLS=8
+    volumes:
+      - ./data:/app/data
+      - ./backend/models/artifacts:/app/backend/models/artifacts
+      - ./mlflow:/app/mlflow
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 120s
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+      args:
+        VITE_API_BASE_URL: /api
+    container_name: drilling-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.14.1
+    container_name: drilling-mlflow
+    command: >
+      mlflow ui --host 0.0.0.0 --port 5000
+      --backend-store-uri /mlflow/mlruns
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow:/mlflow

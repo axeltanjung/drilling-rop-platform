@@ -1,0 +1,17 @@
+**/__pycache__/
+**/*.pyc
+.venv/
+venv/
+node_modules/
+frontend/dist/
+frontend/node_modules/
+data/raw/*.csv
+data/processed/*.csv
+data/*.db
+mlflow/mlruns/
+.git/
+.gitignore
+*.md
+screenshots/
+notebooks/
+tests/

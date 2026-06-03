@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,0.10), transparent),
+              radial-gradient(900px 500px at 0% 100%, rgba(245,158,11,0.06), transparent),
+              #0a0e1a;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .glass {
+    @apply bg-rig-card/70 backdrop-blur border border-rig-border rounded-2xl;
+  }
+  .kpi {
+    @apply glass p-5 relative overflow-hidden transition-all duration-300 hover:shadow-glow;
+  }
+  .neon-text {
+    @apply text-rig-neon;
+    text-shadow: 0 0 12px rgba(34,211,238,0.5);
+  }
+  .pill {
+    @apply text-xs px-2.5 py-1 rounded-full border border-rig-border bg-rig-panel/60;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 transition-all hover:bg-rig-panel hover:text-rig-neon;
+  }
+  .nav-link.active {
+    @apply bg-rig-panel text-rig-neon shadow-glow;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-xl border border-rig-border bg-rig-panel hover:bg-rig-border/60 transition-colors text-sm;
+  }
+  .btn-primary {
+    @apply px-4 py-2 rounded-xl bg-rig-neon2 text-slate-900 font-semibold hover:bg-rig-neon transition-colors text-sm;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: #1f2a44; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #2d3b5e; }

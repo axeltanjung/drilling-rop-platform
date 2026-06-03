@@ -1,0 +1,38 @@
+# ===== Backend / ML dependencies =====
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.7.4
+pydantic-settings==2.3.4
+python-multipart==0.0.9
+
+pandas==2.2.2
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.5.0
+
+lightgbm==4.4.0
+catboost==1.2.5
+
+# Deep learning (TensorFlow used by default; PyTorch optional)
+tensorflow==2.16.1
+
+# Experiment tracking
+mlflow==2.14.1
+
+# Explainability
+shap==0.45.1
+
+# Optimization / tuning
+optuna==3.6.1
+
+# Reporting / export
+reportlab==4.2.0
+
+# Utilities
+python-dotenv==1.0.1
+joblib==1.4.2
+SQLAlchemy==2.0.31
+
+# Testing
+pytest==8.2.2
+httpx==0.27.0
