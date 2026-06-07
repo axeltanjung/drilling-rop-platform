@@ -18,6 +18,11 @@
 7. [Future Improvements](#7-future-improvements)
 
 ---
+## Project Preview
+
+<img src="assets/AI Insight.png" width="1200"/>
+
+<img src="assets/Drilling Optimization.png" width="1200"/>
 
 ## 1. Project Background
 
